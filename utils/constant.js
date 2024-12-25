@@ -1,0 +1,1 @@
+export const BOOK_MY_SERVICE = "Book My Service";
