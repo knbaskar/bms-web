@@ -17,6 +17,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import { SessionProvider } from 'next-auth/react';
 import {
   ThemeProvider,
   createTheme,
@@ -139,7 +140,9 @@ export default class MyApp extends App {
         </Head>
         <ThemeProvider theme={theme}>
           <StyledEngineProvider injectFirst>
+          <SessionProvider session={pageProps.session}>
             <Component {...pageProps} />
+            </SessionProvider>
           </StyledEngineProvider>
         </ThemeProvider>
       </React.Fragment>
