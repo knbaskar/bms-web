@@ -1,10 +1,12 @@
 /*eslint-disable*/
 import React from "react";
 // nodejs library that concatenates classes
+import { signIn, useSession } from 'next-auth/react';
 import classNames from "classnames";
 import makeStyles from '@mui/styles/makeStyles';
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import { useRouter } from 'next/router';
 // core components
 import Header from "/components/Header/Header.js";
 import HeaderLinks from "/components/Header/HeaderLinks.js";
@@ -37,6 +39,8 @@ import Footer from "/pages-sections/sections-page/Footer.js";
 const useStyles = makeStyles(headersStyle);
 
 export default function PresentationPage({ ...rest }) {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -50,11 +54,24 @@ export default function PresentationPage({ ...rest }) {
     slidesToScroll: 1,
     autoplay: false
   };
-return (
+
+const signInGoogleHandler = (e) => {
+  e.preventDefault();
+  signIn('google')
+};
+
+if (status === "loading") {
+  return <div>Loading...</div>; // Show a loading message while the session is being fetched
+}
+
+if (session) {
+  router.push('/about-us');
+  return;
+}
+  return (
     <div>
-      <meta name="google-site-verification" content="JwVHqXDMRQgy3blHesgAl8OMFNVaN9ghuqbDKYMVPGg" />
-       {/* HEADER 2 START */}
-       <div>
+      {/* HEADER 2 START */}
+      <div>
         <Header
           absolute
           brand="Book My Service"
@@ -107,6 +124,22 @@ return (
                     Contact us
                   </Button>
                 </ListItem>
+                <Button
+                  href="#google"
+                  className={classes.navLink}
+                  onClick={signInGoogleHandler}
+                  color="transparent"
+                >
+                  Google
+                </Button>
+                <Button
+                  href="#facebook"
+                  className={classes.navLink}
+                  onClick={signInGoogleHandler}
+                  color="transparent"
+                >
+                  facebook
+                </Button>
               </List>
               <List className={classes.list + " " + classes.mlAuto}>
                 <ListItem className={classes.listItem}>
@@ -231,17 +264,16 @@ return (
         </div>
       </div>
       {/* HEADER 2 END */}
-      
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionDescription />
         <SectionComponents />
         <SectionCards />
-        <SectionContent />        
+        <SectionContent />
         <SectionFreeDemo />
         <SectionOverview /> 
       </div>
       <SectionPricing />
-              <br/>
+      <br />
       <SectionContacts />
       <Footer />
 
