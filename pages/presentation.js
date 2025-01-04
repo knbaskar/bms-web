@@ -64,10 +64,10 @@ if (status === "loading") {
   return <div>Loading...</div>; // Show a loading message while the session is being fetched
 }
 
-if (session) {
+/*if (session) {
   router.push('/about-us');
   return;
-}
+}*/
   return (
     <div>
       {/* HEADER 2 START */}
