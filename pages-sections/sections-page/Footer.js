@@ -25,8 +25,9 @@ const Footer = () => {
         <div style={styles.column}>
           <h4 style={styles.heading}>Terms and Conditions</h4>
           <ul style={styles.list}>
+          <li><Link href="/terms" style={styles.link}>Terms of Use</Link></li>
             <li><Link href="/privacy-policy" style={styles.link}>Privacy Policy</Link></li>
-            <li><Link href="/cookies-consent" style={styles.link}>Cookies Consent</Link></li>
+            <li><Link href="/refunds" style={styles.link}>Refunds</Link></li>
           </ul>
         </div>
 
