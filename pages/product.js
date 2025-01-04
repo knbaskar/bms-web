@@ -21,7 +21,7 @@ import HeaderLinks from "/components/Header/HeaderLinks.js";
 import Parallax from "/components/Parallax/Parallax.js";
 import GridContainer from "/components/Grid/GridContainer.js";
 import GridItem from "/components/Grid/GridItem.js";
-import Footer from "/components/Footer/Footer.js";
+//import Footer from "/components/Footer/Footer.js";
 import Button from "/components/CustomButtons/Button.js";
 import Accordion from "/components/Accordion/Accordion.js";
 import InfoArea from "/components/InfoArea/InfoArea.js";
@@ -30,6 +30,8 @@ import CardHeader from "/components/Card/CardHeader.js";
 import CardBody from "/components/Card/CardBody.js";
 import CardFooter from "/components/Card/CardFooter.js";
 import Tooltip from "@mui/material/Tooltip";
+// sections for this page
+import Footer from "/pages-sections/sections-page/Footer.js";
 
 import productStyle from "/styles/jss/nextjs-material-kit-pro/pages/productStyle.js";
 import { BOOK_MY_SERVICE } from "../utils/constant";
@@ -481,64 +483,7 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-      <Footer
-        // theme="dark"
-        content={
-          <div>
-            <div className={classes.left}>
-              <List className={classes.list}>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/?ref=njsmkp-pricing"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    Creative Tim
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-pricing"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    About us
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="http://blog.creative-tim.com/?ref=njsmkp-pricing"
-                    className={classes.block}
-                  >
-                    Blog
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/license?ref=njsmkp-pricing"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    Licenses
-                  </a>
-                </ListItem>
-              </List>
-            </div>
-            <div className={classes.right}>
-              &copy; {1900 + new Date().getYear()} , made with{" "}
-              <Favorite className={classes.icon} /> by{" "}
-              <a
-                href="https://www.creative-tim.com?ref=njsmkp-pricing"
-                target="_blank"
-                className={classes.aClasses}
-              >
-                Creative Tim
-              </a>{" "}
-              for a better web.
-            </div>
-          </div>
-        }
-      />
+      <Footer />
     </div>
   );
 }

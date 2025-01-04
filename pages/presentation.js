@@ -106,9 +106,9 @@ if (status === "loading") {
                 </ListItem>
                 <ListItem className={classes.listItem}>
                   <Button
-                    href="#pablo"
+                    href="/product"
                     className={classes.navLink}
-                    onClick={(e) => e.preventDefault()}
+                    //onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Products
