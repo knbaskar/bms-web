@@ -156,9 +156,11 @@ export default function SectionContacts({ ...rest }) {
                 title="Find us at the office"
                 description={
                   <span>
-                    XXX, MK Paradise
-                    <br /> Parrys,
-                    <br /> Chennai, India
+                    Book My Service
+                    3A, Balvadi Street
+                    <br /> Nerkundram,
+                    <br /> Chennai - 600 107, India
+                    <br /> <a href="mailto:admin@makemyservice.ai">admin@makemyservice.ai</a>
                   </span>
                 }
                 icon={PinDrop}
@@ -169,8 +171,8 @@ export default function SectionContacts({ ...rest }) {
                 description={
                   <span>
                     Sam
-                    <br /> +40 762 321 762
-                    <br /> Mon - Fri, 8:00-22:00
+                    <br /> +91 79047 21620
+                    <br /> All Days, 8:00-22:00
                   </span>
                 }
                 icon={Phone}
