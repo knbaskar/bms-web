@@ -18,7 +18,9 @@ import GridItem from "/components/Grid/GridItem.js";
 import InfoArea from "/components/InfoArea/InfoArea.js";
 import CustomInput from "/components/CustomInput/CustomInput.js";
 import Button from "/components/CustomButtons/Button.js";
-import Footer from "/components/Footer/Footer.js";
+//import Footer from "/components/Footer/Footer.js";
+// sections for this page
+import Footer from "/pages-sections/sections-page/Footer.js";
 
 import contactUsStyle from "/styles/jss/nextjs-material-kit-pro/pages/contactUsStyle.js";
 import { BOOK_MY_SERVICE } from "../utils/constant";
@@ -101,7 +103,7 @@ const CustomSkinMap = () => {
 
     const contentString =
       '<div class="info-window-content"><h2>'+ {BOOK_MY_SERVICE} +'</h2>' +
-      "<p>A premium Admin for React, Material-UI, and React Hooks.</p></div>";
+      "<p>Find the perfect salon, spa, or pet care provider near you.</p></div>";
 
     const infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -201,10 +203,13 @@ export default function ContactUsPage() {
                   className={classes.info}
                   title="Find us at the office"
                   description={
-                    <p>
-                      Bld Mihail Kogalniceanu, nr. 8, <br /> 7652 Bucharest,{" "}
-                      <br /> Romania
-                    </p>
+                    <span>
+                    Book My Service
+                    <br /> 3A, Balvadi Street
+                    <br /> Nerkundram,
+                    <br /> Chennai - 600 107, India
+                    <br /> <a href="mailto:admin@makemyservice.ai">admin@makemyservice.ai</a>
+                  </span>
                   }
                   icon={PinDrop}
                   iconColor="primary"
@@ -213,87 +218,23 @@ export default function ContactUsPage() {
                   className={classes.info}
                   title="Give us a ring"
                   description={
-                    <p>
-                      Michael Jordan <br /> +40 762 321 762 <br /> Mon - Fri,
-                      8:00-22:00
-                    </p>
+                    <span>
+                    Sam
+                    <br /> +91 79047 21620
+                    <br /> All Days, 8:00-22:00
+                  </span>
                   }
                   icon={Phone}
                   iconColor="primary"
                 />
-                <InfoArea
-                  className={classes.info}
-                  title="Legal Information"
-                  description={
-                    <p>
-                      Creative Tim Ltd. <br /> VAT · EN2341241 <br /> IBAN ·
-                      EN8732ENGB2300099123 <br /> Bank · Great Britain Bank
-                    </p>
-                  }
-                  icon={BusinessCenter}
-                  iconColor="primary"
-                />
+                
               </GridItem>
             </GridContainer>
           </div>
         </div>
       </div>
-      <Footer
-        content={
-          <div>
-            <div className={classes.left}>
-              <List className={classes.list}>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/?ref=njsmkp-contact-us"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    Creative Tim
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-contact-us"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    About us
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="http://blog.creative-tim.com/?ref=njsmkp-contact-us"
-                    className={classes.block}
-                  >
-                    Blog
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/license?ref=njsmkp-contact-us"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    Licenses
-                  </a>
-                </ListItem>
-              </List>
-            </div>
-            <div className={classes.right}>
-              &copy; {1900 + new Date().getYear()} , made with{" "}
-              <Favorite className={classes.icon} /> by{" "}
-              <a
-                href="https://www.creative-tim.com?ref=njsmkp-contact-us"
-                target="_blank"
-              >
-                Creative Tim
-              </a>{" "}
-              for a better web.
-            </div>
-          </div>
-        }
-      />
+      <br></br>
+      <Footer />
     </div>
   );
 }

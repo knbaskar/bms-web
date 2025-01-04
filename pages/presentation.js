@@ -116,9 +116,9 @@ if (status === "loading") {
                 </ListItem>
                 <ListItem className={classes.listItem}>
                   <Button
-                    href="#pablo"
+                    href="/contact-us"
                     className={classes.navLink}
-                    onClick={(e) => e.preventDefault()}
+                    //onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Contact us
