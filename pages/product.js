@@ -36,7 +36,9 @@ import Footer from "/pages-sections/sections-page/Footer.js";
 import productStyle from "/styles/jss/nextjs-material-kit-pro/pages/productStyle.js";
 import { BOOK_MY_SERVICE } from "../utils/constant";
 
-const useStyles = makeStyles(productStyle);
+import headersStyle from "/styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js";
+
+const useStyles = makeStyles(headersStyle);
 
 export default function ProductPage() {
   const [colorSelect, setColorSelect] = React.useState("0");
@@ -63,20 +65,98 @@ export default function ProductPage() {
   return (
     <div className={classes.productPage}>
       <Header
-        brand={BOOK_MY_SERVICE}
-        links={<HeaderLinks dropdownHoverColor="rose" />}
-        fixed
-        color="transparent"
-        changeColorOnScroll={{
-          height: 100,
-          color: "rose"
-        }}
-      />
-      <Parallax
-        image="/img/bg6.jpg"
-        filter="rose"
-        className={classes.pageHeader}
-      >
+          absolute
+          brand="Book My Service"
+          color="transparent"
+          fixed
+          changeColorOnScroll={{
+            height: 400,
+            color: "info"
+          }}
+          links={
+            <div className={classes.collapse}>
+              <List className={classes.list + " " + classes.mlAuto}>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/presentation"
+                    className={classes.navLink}
+                    onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    Home
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/about-us"
+                    className={classes.navLink}
+                    //onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    About us
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/product"
+                    className={classes.navLink}
+                    //onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    Products
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/contact-us"
+                    className={classes.navLink}
+                    //onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    Contact us
+                  </Button>
+                </ListItem>
+                
+              </List>
+              <List className={classes.list + " " + classes.mlAuto}>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    color="transparent"
+                    href="https://twitter.com/CreativeTim?ref=creativetim"
+                    target="_blank"
+                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                  >
+                    <i className={"fab fa-twitter"} />
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    color="transparent"
+                    href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                    target="_blank"
+                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                  >
+                    <i className={"fab fa-facebook"} />
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    color="transparent"
+                    href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                    target="_blank"
+                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                  >
+                    <i className={"fab fa-instagram"} />
+                  </Button>
+                </ListItem>
+              </List>
+            </div>
+          }
+        />
+        <div
+          className={classes.pageHeader}
+          style={{ backgroundImage: "url('/img/bg9.jpg')" }}
+        >
         <div className={classes.container}>
           <GridContainer className={classes.titleRow}>
             <GridItem md={4} className={classes.mlAuto}>
@@ -86,7 +166,7 @@ export default function ProductPage() {
             </GridItem>
           </GridContainer>
         </div>
-      </Parallax>
+      </div>
       <div className={classNames(classes.section, classes.sectionGray)}>
         <div className={classes.container}>
           <div className={classNames(classes.main, classes.mainRaised)}>
@@ -120,7 +200,7 @@ export default function ProductPage() {
               </GridItem>
               <GridItem md={6} sm={6}>
                 <h2 className={classes.title}>Becky Silk Blazer</h2>
-                <h3 className={classes.mainPrice}>$335</h3>
+                <h3 className={classes.mainPrice}>Rs.335</h3>
                 <Accordion
                   active={0}
                   activeColor="rose"

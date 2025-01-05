@@ -12,18 +12,21 @@ import Header from "/components/Header/Header.js";
 import HeaderLinks from "/components/Header/HeaderLinks.js";
 import GridContainer from "/components/Grid/GridContainer.js";
 import GridItem from "/components/Grid/GridItem.js";
+import Button from "/components/CustomButtons/Button.js";
 import Parallax from "/components/Parallax/Parallax.js";
-import Footer from "/components/Footer/Footer.js";
+//import Footer from "/components/Footer/Footer.js";
 // sections for this page
 import SectionDescription from "/pages-sections/about-us/SectionDescription.js";
 import SectionTeam from "/pages-sections/about-us/SectionTeam.js";
 import SectionServices from "/pages-sections/about-us/SectionServices.js";
 import SectionOffice from "/pages-sections/about-us/SectionOffice.js";
 import SectionContact from "/pages-sections/about-us/SectionContact.js";
+import Footer from "/pages-sections/sections-page/Footer.js";
 
 import aboutUsStyle from "/styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle.js";
+import headersStyle from "/styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js";
 
-const useStyles = makeStyles(aboutUsStyle);
+const useStyles = makeStyles(headersStyle);
 
 export default function AboutUsPage() {
   React.useEffect(() => {
@@ -34,36 +37,127 @@ export default function AboutUsPage() {
   return (
     <div>
       <Header
-        brand="Book My Service"
-        links={<HeaderLinks dropdownHoverColor="info" />}
-        fixed
-        color="transparent"
-        changeColorOnScroll={{
-          height: 300,
-          color: "info",
-        }}
-      />
-      <Parallax image="/img/bg9.jpg" filter="dark" small>
-        <div className={classes.container}>
-          <GridContainer justifyContent="center">
-            <GridItem
-              md={8}
-              sm={8}
-              className={classNames(
-                classes.mlAuto,
-                classes.mrAuto,
-                classes.textCenter
-              )}
-            >
-              <h1 className={classes.title}>About Us</h1>
-              <h4>
-                Meet the amazing team behind this project and find out more
-                about how we work.
-              </h4>
-            </GridItem>
-          </GridContainer>
+          absolute
+          brand="Book My Service"
+          color="transparent"
+          fixed
+          changeColorOnScroll={{
+            height: 400,
+            color: "info"
+          }}
+          links={
+            <div className={classes.collapse}>
+              <List className={classes.list + " " + classes.mlAuto}>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/presentation"
+                    className={classes.navLink}
+                    onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    Home
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/about-us"
+                    className={classes.navLink}
+                    //onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    About us
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/product"
+                    className={classes.navLink}
+                    //onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    Products
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="/contact-us"
+                    className={classes.navLink}
+                    //onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
+                    Contact us
+                  </Button>
+                </ListItem>
+                
+              </List>
+              <List className={classes.list + " " + classes.mlAuto}>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    color="transparent"
+                    href="https://twitter.com/CreativeTim?ref=creativetim"
+                    target="_blank"
+                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                  >
+                    <i className={"fab fa-twitter"} />
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    color="transparent"
+                    href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                    target="_blank"
+                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                  >
+                    <i className={"fab fa-facebook"} />
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    color="transparent"
+                    href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                    target="_blank"
+                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                  >
+                    <i className={"fab fa-instagram"} />
+                  </Button>
+                </ListItem>
+              </List>
+            </div>
+          }
+        />
+        <div
+          className={classes.pageHeader}
+          style={{ backgroundImage: "url('/img/bg9.jpg')" }}
+        >
+
+          <div className={classes.conatinerHeader2}>
+            <GridContainer>
+              <GridItem
+                xs={12}
+                sm={8}
+                md={8}
+                className={classNames(
+                  classes.mlAuto,
+                  classes.mrAuto,
+                  classes.textCenter
+                )}
+              >
+                <h1 className={classes.title}>About Us</h1>
+                
+              </GridItem>
+              <GridItem
+                xs={12}
+                sm={10}
+                md={10}
+                className={classNames(classes.mlAuto, classes.mrAuto)}
+              >
+                
+              </GridItem>
+            </GridContainer>
+          </div>
         </div>
-      </Parallax>
+        
+      
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <SectionDescription />
@@ -71,65 +165,12 @@ export default function AboutUsPage() {
           <SectionServices />
           <SectionOffice />
           <SectionContact />
+          
         </div>
       </div>
-      <Footer
-        content={
-          <div>
-            <div className={classes.left}>
-              <List className={classes.list}>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/?ref=njsmkp-about-us"
-                    className={classes.block}
-                    target="_blank"
-                  >
-                    Creative Tim
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-about-us"
-                    className={classes.block}
-                    target="_blank"
-                  >
-                    About us
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="http://blog.creative-tim.com/?ref=njsmkp-about-us"
-                    className={classes.block}
-                    target="_blank"
-                  >
-                    Blog
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/license?ref=njsmkp-about-us"
-                    className={classes.block}
-                    target="_blank"
-                  >
-                    Licenses
-                  </a>
-                </ListItem>
-              </List>
-            </div>
-            <div className={classes.right}>
-              &copy; {1900 + new Date().getYear()} , made with{" "}
-              <Favorite className={classes.icon} /> by{" "}
-              <a
-                href="https://www.creative-tim.com?ref=njsmkp-about-us"
-                target="_blank"
-              >
-                Creative Tim
-              </a>{" "}
-              for a better web.
-            </div>
-          </div>
-        }
-      />
+      <br></br>
+      <Footer />
+      
     </div>
   );
 }
