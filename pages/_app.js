@@ -122,12 +122,6 @@ const MyApp = ({ Component, pageProps }) => {
           name="google-site-verification"
           content={metadata.verification.google}
         />
-
-        <script
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`}
-          async
-          defer
-        ></script>
         <title>{BOOK_MY_SERVICE}</title>
       </Head>
       <ThemeProvider theme={theme}>
