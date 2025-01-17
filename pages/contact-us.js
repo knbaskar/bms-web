@@ -33,8 +33,8 @@ const CustomSkinMap = () => {
   React.useEffect(() => {
     let google = window.google;
     let map = mapRef.current;
-    let lat = "44.43353";
-    let lng = "26.093928";
+    let lat = "13.002157996718852";
+    let lng = "80.21674695906303";
     const myLatlng = new google.maps.LatLng(lat, lng);
     const mapOptions = {
       zoom: 14,
@@ -229,38 +229,16 @@ export default function ContactUsPage() {
         />
         <div
           className={classes.pageHeader}
-          style={{ backgroundImage: "url('/img/bg9.jpg')" }}
+          style={{  minHeight: '79vh' }}
+          // style={{ backgroundImage: "url('/bg9.jpg')" }}
         >
 
-          <div className={classes.conatinerHeader2}>
-            <GridContainer>
-              <GridItem
-                xs={12}
-                sm={8}
-                md={8}
-                className={classNames(
-                  classes.mlAuto,
-                  classes.mrAuto,
-                  classes.textCenter
-                )}
-              >
-                <h1 className={classes.title}>Contact Us</h1>
-                
-              </GridItem>
-              <GridItem
-                xs={12}
-                sm={10}
-                md={10}
-                className={classNames(classes.mlAuto, classes.mrAuto)}
-              >
-                
-              </GridItem>
-            </GridContainer>
+          <div className={classes.contactMapContainer}>
+              <div  style={{ height: '42em', width: '185vh'}}>
+                <CustomSkinMap />
+              </div>
           </div>
         </div>
-      <div className={classes.bigMap}>
-        <CustomSkinMap />
-      </div>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.contactContent}>
           <div className={classes.container}>
