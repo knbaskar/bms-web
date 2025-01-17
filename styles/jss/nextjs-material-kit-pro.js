@@ -134,6 +134,7 @@ const grayColor = [
 ];
 const whiteColor = "#FFF";
 const blackColor = "#000";
+const orangeColor = "#FFA101";
 const twitterColor = "#55acee";
 const facebookColor = "#3b5998";
 const googleColor = "#dd4b39";
@@ -287,6 +288,12 @@ const primaryCardHeader = {
   color: whiteColor,
   background:
     "linear-gradient(60deg, " + primaryColor[1] + ", " + primaryColor[2] + ")",
+  ...primaryBoxShadow,
+};
+const ordinaryCardHeader = {
+  color: whiteColor,
+  background:
+    "linear-gradient(60deg, " + orangeColor + ", " + primaryColor + ")",
   ...primaryBoxShadow,
 };
 const roseCardHeader = {
@@ -475,6 +482,7 @@ export {
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
+  ordinaryCardHeader,
   roseCardHeader,
   cardActions,
   cardHeader,
@@ -492,6 +500,7 @@ export {
   mlAuto,
   mrAuto,
   btnLink,
+  orangeColor,
   coloredShadow,
   hexToRgb,
 };
