@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -11,6 +11,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+import axios from 'axios';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ShareIcon from "@mui/icons-material/Share";
@@ -21,7 +22,53 @@ const RecommendationCard = ({
   area,
   displayPicture,
   averageRating,
-}) => (
+}) => {
+
+  const [book, setBook] = useState({
+		name: "Jones-Parsons",
+		time: "Mon 10:00 am - 7.30pm",
+		img: "https://dpi-interactive.com/europeanskincare/wp-content/uploads/2021/03/Services_Spa_Package-copy.jpg",
+		price: 250,
+	});
+
+	const initPayment = (data) => {
+		const options = {
+			key: "rzp_test_2UTAol2AFSV5VN",
+			amount: data.amount,
+			currency: data.currency,
+			name: book.name,
+			description: "Test Transaction",
+			image: book.img,
+			order_id: data.id,
+			handler: async (response) => {
+				try {
+					const verifyUrl = "/api/payment/verify.";
+					const { data } = await axios.post(verifyUrl, response);
+					console.log(data);
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			theme: {
+				color: "#3399cc",
+			},
+		};
+		const rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	};
+
+  const handlePayment = async (price = 100) => {
+		try {
+			const orderUrl = "/api/payment/orders";
+			const { data } = await axios.post(orderUrl, { amount: price });
+			console.log(data);
+			initPayment(data.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+  
+  return (
   <Box display="inline-flex" alignItems="center" gap={1} position="relative">
     <Card
       sx={{
@@ -94,7 +141,7 @@ const RecommendationCard = ({
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <Button
               variant="outlined"
               color="warning"
@@ -104,7 +151,7 @@ const RecommendationCard = ({
               Profile
             </Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <Button
               variant="contained"
               color="warning"
@@ -112,6 +159,17 @@ const RecommendationCard = ({
               sx={{ fontSize: "8px", padding: "2px" }}
             >
               Book
+            </Button>
+          </Grid>
+          <Grid item xs={4}>
+            <Button
+              variant="outlined"
+              color="warning"
+              fullWidth
+              onClick={() => handlePayment()}
+              sx={{ fontSize: "8px", padding: "2px" }}
+            >
+              ₹ 100
             </Button>
           </Grid>
         </Grid>
@@ -133,5 +191,6 @@ const RecommendationCard = ({
     </Card>
   </Box>
 );
+}
 
 export default RecommendationCard;
