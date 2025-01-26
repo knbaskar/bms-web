@@ -1,5 +1,6 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useEffect } from "react";
+import { signIn, useSession } from 'next-auth/react';
 import makeStyles from "@mui/styles/makeStyles";
 import InputAdornment from "@mui/material/InputAdornment";
 import List from "@mui/material/List";
@@ -20,18 +21,35 @@ import Card from "/components/Card/Card.js";
 import CardBody from "/components/Card/CardBody.js";
 import CardHeader from "/components/Card/CardHeader.js";
 import CustomInput from "/components/CustomInput/CustomInput.js";
-
+import { useRouter } from "next/router";
 import loginPageStyle from "/styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
 import { BOOK_MY_SERVICE } from "../utils/constant";
 
 const useStyles = makeStyles(loginPageStyle);
 
 export default function LoginPage() {
+    const { data: session, status } = useSession();
+      const router = useRouter();
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
   const classes = useStyles();
+
+    const signInGoogleHandler = (e) => {
+    e.preventDefault();
+    signIn('google')
+  };
+
+   useEffect(() => {
+      if (session?.user?.name) {
+        router.push("/recommendations");
+      }
+    }, [status, router]);
+  
+    if (status === "loading") {
+      return <p>Loading...</p>;
+    }
   return (
     <div>
       <Header
@@ -54,7 +72,7 @@ export default function LoginPage() {
               <Card>
                 <form className={classes.form}>
                   <CardHeader
-                    color="primary"
+                    color=""
                     signup
                     className={classes.cardHeader}
                   >
@@ -80,7 +98,7 @@ export default function LoginPage() {
                         justIcon
                         color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
+                        onClick={signInGoogleHandler}
                       >
                         <i className="fab fa-google-plus-g" />
                       </Button>

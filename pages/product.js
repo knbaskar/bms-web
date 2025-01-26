@@ -1,5 +1,6 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react component used to create nice image meadia player
@@ -62,6 +63,50 @@ export default function ProductPage() {
       thumbnail: "/img/examples/product2.jpg"
     }
   ];
+  const [book, setBook] = useState({
+		name: "Jones-Parsons",
+		time: "Mon 10:00 am - 7.30pm",
+		img: "https://dpi-interactive.com/europeanskincare/wp-content/uploads/2021/03/Services_Spa_Package-copy.jpg",
+		price: 250,
+	});
+
+	const initPayment = (data) => {
+		const options = {
+			key: "rzp_test_2UTAol2AFSV5VN",
+			amount: data.amount,
+			currency: data.currency,
+			name: book.name,
+			description: "Test Transaction",
+			image: book.img,
+			order_id: data.id,
+			handler: async (response) => {
+				try {
+					const verifyUrl = "/api/payment/verify.";
+					const { data } = await axios.post(verifyUrl, response);
+					console.log(data);
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			theme: {
+				color: "#3399cc",
+			},
+		};
+		const rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	};
+
+  const handlePayment = async (price) => {
+		try {
+			const orderUrl = "/api/payment/orders";
+			const { data } = await axios.post(orderUrl, { amount: price });
+			console.log(data);
+			initPayment(data.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
   return (
     <div className={classes.productPage}>
       <Header
@@ -352,8 +397,8 @@ export default function ProductPage() {
                   </GridItem>
                 </GridContainer>
                 <GridContainer className={classes.pullRight}>
-                  <Button round color="rose">
-                    Add to Cart &nbsp; <ShoppingCart />
+                  <Button onClick={() => handlePayment(335)} round color="rose">
+                   Place order
                   </Button>
                 </GridContainer>
               </GridItem>

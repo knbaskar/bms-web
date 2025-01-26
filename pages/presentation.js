@@ -1,13 +1,12 @@
 /*eslint-disable*/
 import React from "react";
 // nodejs library that concatenates classes
-import { signIn, useSession } from 'next-auth/react';
 import classNames from "classnames";
 import makeStyles from '@mui/styles/makeStyles';
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { useRouter } from 'next/router';
 // core components
+import Hidden from "@mui/material/Hidden";
 import Header from "/components/Header/Header.js";
 import HeaderLinks from "/components/Header/HeaderLinks.js";
 import Parallax from "/components/Parallax/Parallax.js";
@@ -18,7 +17,7 @@ import Button from "/components/CustomButtons/Button.js";
 import Card from "/components/Card/Card.js";
 import CardBody from "/components/Card/CardBody.js";
 import CustomInput from "/components/CustomInput/CustomInput.js";
-
+import Router from "next/router";
 import headersStyle from "/styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js";
 
 // @mui/icons-material
@@ -28,8 +27,8 @@ import SectionDescription from "/pages-sections/presentation-page/SectionDescrip
 import SectionComponents from "/pages-sections/presentation-page/SectionComponents.js";
 import SectionCards from "/pages-sections/presentation-page/SectionCards.js";
 import SectionContent from "/pages-sections/presentation-page/SectionContent.js";
-import SectionSections from "/pages-sections/presentation-page/SectionSections.js";//removed
-import SectionExamples from "/pages-sections/presentation-page/SectionExamples.js";//removed
+// import SectionSections from "/pages-sections/presentation-page/SectionSections.js";//removed
+// import SectionExamples from "/pages-sections/presentation-page/SectionExamples.js";//removed
 import SectionFreeDemo from "/pages-sections/presentation-page/SectionFreeDemo.js";//to rework
 import SectionOverview from "/pages-sections/presentation-page/SectionOverview.js";
 import SectionPricing from "/pages-sections/presentation-page/SectionPricing.js";
@@ -39,8 +38,8 @@ import Footer from "/pages-sections/sections-page/Footer.js";
 const useStyles = makeStyles(headersStyle);
 
 export default function PresentationPage({ ...rest }) {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  // const { data: session, status } = useSession();
+  // const router = useRouter();
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -55,19 +54,10 @@ export default function PresentationPage({ ...rest }) {
     autoplay: false
   };
 
-const signInGoogleHandler = (e) => {
-  e.preventDefault();
-  signIn('google')
-};
+  const onLoginHandler = () => {
+    Router.push("/login");
+  };
 
-if (status === "loading") {
-  return <div>Loading...</div>; // Show a loading message while the session is being fetched
-}
-
-/*if (session) {
-  router.push('/about-us');
-  return;
-}*/
   return (
     <div>
       {/* HEADER 2 START */}
@@ -124,22 +114,30 @@ if (status === "loading") {
                     Contact us
                   </Button>
                 </ListItem>
-                <Button
-                  href="#google"
-                  className={classes.navLink}
-                  onClick={signInGoogleHandler}
-                  color="transparent"
-                >
-                  Google
-                </Button>
-                <Button
-                  href="#facebook"
-                  className={classes.navLink}
-                  onClick={signInGoogleHandler}
-                  color="transparent"
-                >
-                  facebook
-                </Button>
+                <ListItem className={classes.listItem}>
+                  <Hidden lgDown>
+                    <Button
+                      onClick={(e) => onLoginHandler(e)}
+                      color={"ordinary"}
+                      target="_blank"
+                      className={classes.navButton}
+                      round
+                    >
+                      Login In
+                    </Button>
+                  </Hidden>
+                  <Hidden mdUp>
+                    <Button
+                      href=""
+                      color={"ordinary"}
+                      target="_blank"
+                      className={classes.navButton}
+                      round
+                    >
+                      Login In
+                    </Button>
+                  </Hidden>
+                </ListItem>
               </List>
               <List className={classes.list + " " + classes.mlAuto}>
                 <ListItem className={classes.listItem}>
@@ -270,7 +268,7 @@ if (status === "loading") {
         <SectionCards />
         <SectionContent />
         <SectionFreeDemo />
-        <SectionOverview /> 
+        <SectionOverview />
       </div>
       <SectionPricing />
       <br />

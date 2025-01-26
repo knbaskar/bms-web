@@ -11,6 +11,7 @@ import {
 import "/styles/scss/nextjs-material-kit-pro.scss";
 import "/styles/css/react-demo.css";
 import "animate.css/animate.min.css";
+import '../styles/globals.css';
 import { BOOK_MY_SERVICE } from "../utils/constant";
 
 // Create MUI Theme
@@ -90,7 +91,7 @@ const MyApp = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <title>{metadata.title.default}</title>
-
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         {/* Description */}
         <meta name="description" content={metadata.description} />
 

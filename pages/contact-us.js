@@ -251,7 +251,7 @@ export default function ContactUsPage() {
         >
 
           <div className={classes.contactMapContainer}>
-              <div  style={{ height: '42em', width: '185vh'}}>
+              <div  style={{ height: '53em', width: '185vh'}}>
                 <CustomSkinMap />
               </div>
           </div>
