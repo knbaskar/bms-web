@@ -20,6 +20,11 @@
   vertical-align: middle;
 }
 
+/* Utility Classes (Optional) */
+.gradient-background {
+  background: linear-gradient(to bottom, #FF9500 0%, #FFFFFF 25%);
+}
+
 .btn-file > input {
   position: absolute;
   top: 0;
