@@ -9,7 +9,7 @@ import ThemeProvider from "../Providers/theme-provider";
 import BusinessCategories from "../components/BookMyService/business-categories";
 // import "../globals.css";
 import RecommendationCardContainer from "../components/BookMyService/recommendations-card-container";
-import { CategoryProps, fetchRecommendations } from "./services/api/recommendations";
+import { CategoryProps, fetchRecommendations } from "../services/api/recommendations";
 
 const RecommendationsPage = () => {
   const [categories, setCategories] = useState([]); // Default empty state
